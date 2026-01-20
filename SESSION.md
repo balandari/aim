@@ -1,8 +1,8 @@
 # SESSION.md — AIM (Antiques in Moore)
 
-**Current Focus:** Phase 1 Plan 1 COMPLETE - Navigation scope decision deferred to tomorrow
+**Current Focus:** Navigation pages complete - Ready for deployment review
 **Domain:** antiquesinmoore.com (secured, transfer complete)
-**Last Updated:** January 19, 2026 (Session 6)
+**Last Updated:** January 19, 2026 (Session 7)
 
 ---
 
@@ -21,19 +21,15 @@
 
 ## Next Actions
 
-**TOMORROW:**
-1. **Navigation scope decision** - Determine if Events/Visit/About pages are needed before deployment
-   - Option A: Build all three pages (simple editorial content)
-   - Option B: Deploy landing page only, add pages later
-   - Option C: Different scope entirely
+**READY FOR DEPLOYMENT:**
+1. **Pre-deployment review** - Mobile testing, accessibility check, content review
+2. **Deploy to Vercel** - Connect GitHub repo, configure domain
 
-**BEFORE DEPLOYMENT:**
-1. **Hero photo needed THIS WEEK** - Replace placeholder in business section with store/item photo
-2. **Email collection backend** - Wire up form to Typeform or backend API
-3. **Test on mobile devices** - Verify elderly-friendly design (18px+ text, touch targets)
-
-**PENDING TASKS:**
-- [ ] Website audit skipped January 19, 2026 - deferred to pre-deployment review
+**COMPLETED TODAY:**
+- [x] Navigation pages built (Events, Visit, About)
+- [x] Hero photo added (peacock painting)
+- [x] Giveaway messaging updated (in-person entry only)
+- [x] Contact info updated (Mike's phone number)
 
 ---
 
@@ -52,6 +48,8 @@
 | MVP: Business info + March 7 event | Hours, location, contact, giveaway promotion. No vendor posting in Phase 1. | Jan 18, 2026 |
 | "Wow factor" is mandatory | Not "another business site" - must impress with appearance AND content delivery | Jan 18, 2026 |
 | Phase 2 scope TBD | Dad: "Things are gonna be determined after that March 7 pop-up" | Jan 18, 2026 |
+| Navigation pages before deployment (Option A) | Build Events, Visit, About pages with simple editorial content - complete site before launch | Jan 19, 2026 |
+| In-person entry only (no online form) | Dad clarified - giveaway entry at store only. Site is promotional, not collection mechanism. | Jan 19, 2026 |
 
 ---
 
@@ -67,23 +65,7 @@
 
 ## In Progress
 
-**PAUSED at Checkpoint:** Phase 1 Plan 1 - Task 2 (Hero Design Verification)
-
-**Issue:** Hero section iterations keep copying flyer structure instead of creating original web design
-- ss057: Split-screen version of flyer layout
-- ss058: Rearranged flyer elements with gradient
-- Both attempts: PowerPoint presentation aesthetic, not web "wow factor"
-
-**The problem:** Looks like a PowerPoint presentation, not an ad for a website with a 'wow' factor.
-
-**Research completed:** 2026 web giveaway landing page best practices documented
-
-**Options to resume:**
-1. Provide specific design direction (exact layout, original concept)
-2. Design hero yourself, return with completed design
-3. Accept current functional version (ss058), iterate in polish phase
-
-**Resume point:** Terminal 2, waiting at hero design checkpoint
+None - Phase 1 development complete, ready for deployment review
 
 ---
 

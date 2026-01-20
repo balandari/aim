@@ -43,3 +43,7 @@ next-env.d.ts
 
 # turbopack
 .turbo
+
+# personal documents
+*.pdf
+nul

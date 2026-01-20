@@ -49,14 +49,13 @@ Recent decisions affecting current work:
 **From Plan 01-01 (Landing Page):**
 - Business-first hierarchy: Giveaway is timely content, not primary business story
 - Typography: Georgia serif for timeless antiques aesthetic
-- Navigation scope: Phase 1 includes Events, Visit, About only (Vendors/Photos deferred to Phase 2)
+- Navigation scope: Phase 1 includes Events, Visit, About pages (built Jan 19)
 - Design approach: Editorial magazine layout, not product ad or flyer-on-web
+- Entry mechanism: In-person only at March 7 event (no online form per Dad's Jan 19 clarification)
 
 ### Deferred Issues
 
-**From Plan 01-01:**
-1. **Hero photo needed THIS WEEK** - Business hero section has placeholder, needs compelling store/item photo before deployment
-2. **Email form backend** - Form structure built, needs Typeform/backend integration for actual submissions
+None - Hero photo added (peacock painting), email collection removed per Dad's Jan 19 clarification (in-person entry only).
 
 ### Blockers/Concerns
 
@@ -68,6 +67,6 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-01-19
-Stopped at: Plan 01-01 complete - elegant landing page foundation established
-Next up: Build Events, Visit, About pages (simple editorial content matching landing page aesthetic)
+Stopped at: Navigation pages complete (Events, Visit, About), giveaway messaging updated to in-person entry only, hero photo added (peacock painting)
+Next up: Pre-deployment review and deployment to Vercel
 Resume file: 01-01-SUMMARY.md
