@@ -117,7 +117,7 @@ export default function Hero() {
                 </h3>
                 <p className="text-2xl font-serif text-neutral-900">Visit in Person</p>
                 <p className="text-sm text-neutral-600 mt-2">
-                  Stop by the event on March 7th and provide your email address at our booth to enter. Winner will be announced at noon and contacted by email or phone.
+                  Stop by the store any weekend through March 7th and provide your email address to enter. Winner will be announced at noon on March 7th and contacted by email or phone.
                 </p>
               </div>
 
