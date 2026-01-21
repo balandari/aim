@@ -24,7 +24,7 @@ March 7 TV giveaway promotion must work perfectly - email collection, event deta
 - [ ] Mobile-first responsive experience (most users on phones)
 - [ ] Content update mechanism Mike can use to post event information
 - [ ] Fast page loads and excellent Core Web Vitals
-- [ ] Accessible to elderly demographic (Dad's customer base)
+- [ ] Accessible design for all users
 
 ### Out of Scope
 
@@ -67,7 +67,7 @@ March 7 TV giveaway promotion must work perfectly - email collection, event deta
 - **Timeline**: March 7, 2026 hard deadline — Site must be live for TV giveaway promotion (7 weeks from Jan 18)
 - **Content Management**: Mike manages updates — Need mechanism for Mike to post event information without requiring code changes
 - **Scalability**: Architecture must support Phase 2 expansion — Phase 1 shines as business site, Phase 2 adds features without rebuild
-- **Mobile-First**: Mandatory mobile optimization — Most customers access on phones, elderly demographic needs large touch targets
+- **Mobile-First**: Mandatory mobile optimization — Most customers access on phones, need large touch targets for ease of use
 - **Tech Familiarity**: Leverage React/Next.js experience — Mike familiar with this stack from aimvendors project
 - **Performance**: Fast load times required — "Wow factor" can't sacrifice speed; excellent Core Web Vitals needed
 

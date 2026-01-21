@@ -26,7 +26,7 @@
 
 Future work (Phase 2+):
 - Official Rules page (legal compliance for giveaway)
-- Accessibility audit (WCAG 2.2, elderly-friendly verification)
+- Accessibility audit (WCAG 2.2 compliance verification)
 - Phase 2 foundation (if needed post-March 7)
 
 **COMPLETED TODAY:**

@@ -488,7 +488,7 @@ Source: [Tailwind Best Practices 2025-2026](https://www.frontendtools.tech/blog/
 **Performance Metrics:**
 - Less JavaScript = better Time to Interactive
 - Server Components never ship JS to client
-- Especially important for elderly users on older devices
+- Especially important for users on older devices
 - Source: [React 2026 Performance](https://medium.com/@expertappdevs/react-js-2026-performance-secure-architecture-84f78ad650ab)
 
 ### UI Library Selection for Performance
@@ -498,7 +498,7 @@ Source: [Tailwind Best Practices 2025-2026](https://www.frontendtools.tech/blog/
 Source: [React UI Frameworks 2026](https://vocal.media/futurism/the-8-react-ui-frameworks-you-must-master-for-2026)
 
 **Why this matters for antiquesinmoore.com:**
-- Elderly users may have older phones/computers
+- Users may have older phones/computers
 - Faster sites = better user experience
 - Better SEO rankings
 - Lower bounce rates

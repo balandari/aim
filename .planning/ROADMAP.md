@@ -39,7 +39,7 @@ Plans:
 - Typeform integration for email collection
 - Hero giveaway treatment
 - Official Rules page (legal compliance)
-- Mobile-first, elderly-friendly design
+- Mobile-first, accessible design
 - Deployed to Vercel
 
 **Timeline:** 5-7 days (launch early February, 4+ weeks before March 7)
@@ -77,7 +77,7 @@ Plans:
 - Business information pages (hours, location, contact, about)
 - Google Maps integration
 - Warm authentic aesthetic implementation
-- Mobile-first responsive design (elderly-friendly)
+- Mobile-first responsive design (accessible)
 - Content management operational
 
 **Timeline:** 1 week (late February)
@@ -111,7 +111,7 @@ Plans:
 
 **Key deliverables:**
 - Performance optimization (Core Web Vitals excellence)
-- Accessibility audit (WCAG 2.2, elderly-friendly validation)
+- Accessibility audit (WCAG 2.2, accessible validation)
 - Micro-interactions and animations (Framer Motion)
 - Cross-browser and device testing
 - Pre-launch review and deployment

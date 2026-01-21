@@ -21,7 +21,7 @@
 - `tailwind.config.ts` - Custom design tokens:
   - Typography: Georgia serif (display), Segoe UI (sans)
   - Colors: Crimson red (primary), Navy blue (secondary), Yellow (accent)
-  - Font sizes: 18px base minimum for elderly demographic
+  - Font sizes: 18px base minimum for readability
 - `app/page.tsx` - Home page using Hero component
 - `public/vizio-tv.png` - TV product photo for giveaway section
 
