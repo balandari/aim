@@ -2,7 +2,7 @@
 
 **Current Focus:** DEPLOYED TO PRODUCTION - Site live at antiquesinmoore.com
 **Domain:** antiquesinmoore.com (LIVE)
-**Last Updated:** January 19, 2026 (Session 7)
+**Last Updated:** January 21, 2026 (Session 8)
 
 ---
 
@@ -25,6 +25,7 @@
 **PHASE 1 COMPLETE - SITE LIVE**
 
 Future work (Phase 2+):
+- [ ] Website audit skipped Jan 21, 2026 (giveaway text fix - minor change)
 - Official Rules page (legal compliance for giveaway)
 - Accessibility audit (WCAG 2.2 compliance verification)
 - Phase 2 foundation (if needed post-March 7)
@@ -240,3 +241,25 @@ claude
 - Optional: Official Rules page if legal compliance needed
 - Optional: Full accessibility audit (WCAG 2.2)
 - Phase 2 planning after March 7 event
+
+---
+
+## Session Summary - January 21, 2026
+
+**Session 8: Giveaway Entry Messaging Fix**
+
+**Accomplished:**
+- Fixed giveaway entry messaging on home page (Hero.tsx)
+- Fixed giveaway entry messaging on Events page
+- Updated text from "Stop by the event on March 7th" to "Stop by the store any weekend through March 7th"
+- Accurately reflects that entries started last weekend and continue through March 7th
+- Deployed both fixes to production
+
+**Status:**
+- Site live at antiquesinmoore.com
+- Giveaway messaging now accurate on all pages
+- Git clean, all changes deployed
+
+**Next Session:**
+- Monitor site and giveaway response
+- Optional future work: Official Rules page, accessibility audit, Phase 2 planning
