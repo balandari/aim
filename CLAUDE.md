@@ -93,16 +93,18 @@ GSD planning is MANDATORY before implementation.
 
 ---
 
-## Session Protocols
+## CRITICAL: Session Start Grounding
 
-**On ANY session start** (greeting, "continue", or first message):
-1. First read `E:\MRAMSEYBUILDS\CLAUDE.md` (master protocols, The Refinement, commands)
-2. Then read this file (project context)
-3. Then read SESSION.md (resume point)
+**On ANY session start** (continue, greeting, etc.):
 
-This ensures hub upgrades propagate to all projects.
+1. **READ THIS FILE** with the Read tool
+2. This is NOT optional. Claude Code loads CLAUDE.md into system context automatically, but **having text in context is NOT the same as being grounded in it.**
+3. The explicit read forces active processing of project context before any work begins.
+4. **Then** follow the protocol below.
 
 ---
+
+## Session Protocols
 
 **On "continue" (project session start):**
 - **MANDATORY:** Follow `.claude/protocols/PROJECT-SESSION-FLOW.md`

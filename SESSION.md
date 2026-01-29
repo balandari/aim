@@ -263,3 +263,24 @@ claude
 **Next Session:**
 - Monitor site and giveaway response
 - Optional future work: Official Rules page, accessibility audit, Phase 2 planning
+
+---
+
+## Future Features Backlog (from aimvendors ideas)
+
+**Routed Jan 23, 2026** - Features originally planned for aimvendors, still relevant for AIM Phase 2+.
+
+| Item | Type | Notes |
+|------|------|-------|
+| Polling system for vendor votes | Feature | Let vendors vote on changes |
+| Public favorites feature | Feature | Save photos before visiting |
+| Special pages for Mike and dad | Feature | Differentiated display |
+| Vendor space offerings | Revenue | One-time setup + monthly fee (price TBD) |
+| Newsletter subscription | Feature | Placement: just under header |
+| "Looking to buy" announcement | Premium | For paid vendor pages - items vendor wants to purchase |
+| Landing page video auto-start | UX | Play once on first visit, replay on user prompt only |
+| Vendor map location | Feature | Show booth location on vendor's personal page |
+| Jessie newsletter deal | Barter | Jessie runs newsletter in exchange for custom page (like paid tier) |
+| Premium page value prop | Strategy | What makes vendors WANT their own page? Needs planning |
+| Vendor self-customization | Feature | Vendors customize their own pages, hands-off for Mike |
+| Self-sufficient site | Goal | Minimal ongoing maintenance once built |
