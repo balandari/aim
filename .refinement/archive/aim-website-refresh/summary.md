@@ -2,7 +2,7 @@
 Work Unit: 1/1: aim-website-refresh
 Date:      2026-03-26
 Target:    C:/MRAMSEYBUILDS/projects/aim
-Commit:    (pending)
+Commit:    b672715
 
 ## Outcome
 SUCCESS -- Complete website refresh from March 7 giveaway build to Warm Editorial design with earth/brass/cream/stone palette, two pages (homepage + gallery), data-driven events, and lightbox gallery.
