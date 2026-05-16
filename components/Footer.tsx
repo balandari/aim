@@ -65,10 +65,6 @@ export default function Footer() {
             </h3>
             <div className="font-sans text-sm leading-relaxed space-y-2">
               <div className="flex justify-between max-w-xs">
-                <span className="text-stone-400">Friday</span>
-                <span className="text-cream-100">12 PM &ndash; 5 PM</span>
-              </div>
-              <div className="flex justify-between max-w-xs">
                 <span className="text-stone-400">Saturday</span>
                 <span className="text-cream-100">9 AM &ndash; 5 PM</span>
               </div>

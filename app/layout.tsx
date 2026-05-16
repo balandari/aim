@@ -25,7 +25,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Antiques in Moore | Moore, Oklahoma's Premier Antique Destination",
   description:
-    "Discover unique treasures at Antiques in Moore — an 8,000 sq ft antique mall with 50+ vendors in Moore, Oklahoma. Open Friday 12-5, weekends 9-5.",
+    "Discover unique treasures at Antiques in Moore — an 8,000 sq ft antique mall with 20+ vendors in Moore, Oklahoma. Open weekends 9-5.",
 };
 
 export default function RootLayout({

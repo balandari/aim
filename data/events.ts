@@ -21,7 +21,6 @@ export const events: AIMEvent[] = [
 ];
 
 export const defaultHours = {
-  friday: '12 PM - 5 PM',
   weekend: '9 AM - 5 PM',
 };
 

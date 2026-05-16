@@ -121,13 +121,9 @@ export default function EventsSection() {
             </h3>
             <p className="mt-3 text-stone-600 font-sans text-base leading-relaxed">
               No special events scheduled right now, but our doors are open every weekend.
-              Come browse 50+ vendors and discover something unexpected.
+              Come browse 20+ vendors and discover something unexpected.
             </p>
             <div className="mt-6 space-y-2 text-sm font-sans">
-              <div className="flex items-center gap-3 text-stone-700">
-                <ClockIcon />
-                <span>Friday: {defaultHours.friday}</span>
-              </div>
               <div className="flex items-center gap-3 text-stone-700">
                 <ClockIcon />
                 <span>Saturday &amp; Sunday: {defaultHours.weekend}</span>

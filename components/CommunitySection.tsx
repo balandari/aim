@@ -1,5 +1,5 @@
 const stats = [
-  { value: "50+", label: "Vendors" },
+  { value: "20+", label: "Vendors" },
   { value: "3,000+", label: "Facebook Followers" },
   { value: "94%", label: "Recommend" },
   { value: "8,000", label: "Square Feet" },
@@ -65,7 +65,7 @@ export default function CommunitySection() {
               jewelry, rare collectibles, and everyday treasures you won&apos;t find anywhere else.
             </p>
             <p className="mt-5 text-cream-300 font-sans text-base leading-relaxed">
-              Open every Friday afternoon and all weekend long, with special outdoor markets and
+              Open every weekend, with special outdoor markets and
               seasonal events throughout the year. Whether you&apos;re a serious collector or just love
               the thrill of the hunt, there&apos;s always something new to discover.
             </p>
