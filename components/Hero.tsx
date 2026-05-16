@@ -102,8 +102,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom fade — adapts to theme so it matches the next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-900 to-transparent rounded-b-2xl" />
+        {/* Bottom fade — always dark so it blends with the hero overlay in both themes */}
+        <div className="always-dark">
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-900 to-transparent rounded-b-2xl" />
+        </div>
       </div>
     </section>
   );
