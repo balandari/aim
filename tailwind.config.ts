@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,56 +10,58 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm Editorial palette: aged wood, warm metals, Oklahoma red earth
+        // ---- Accent colors (theme-independent) ----
         earth: {
-          DEFAULT: "#9E4A2F", // Oklahoma red earth -- primary accent
-          light: "#C2714E",  // Lighter terracotta
-          dark: "#7A3621",   // Deep earth
-          50: "#FDF5F0",     // Faintest earth tint
-          100: "#F7E4D8",    // Light earth wash
-          200: "#E8C4B0",    // Warm blush
-          300: "#D4A08A",    // Soft terracotta
-          400: "#C2714E",    // Light terracotta
-          500: "#9E4A2F",    // Oklahoma red earth
-          600: "#7A3621",    // Deep earth
-          700: "#5C2818",    // Dark earth
-          800: "#3E1A10",    // Very dark earth
-          900: "#200D08",    // Near black earth
+          DEFAULT: "#9E4A2F",
+          light: "#C2714E",
+          dark: "#7A3621",
+          50: "#FDF5F0",
+          100: "#F7E4D8",
+          200: "#E8C4B0",
+          300: "#D4A08A",
+          400: "#C2714E",
+          500: "#9E4A2F",
+          600: "#7A3621",
+          700: "#5C2818",
+          800: "#3E1A10",
+          900: "#200D08",
         },
         brass: {
-          DEFAULT: "#B08D57", // Warm metal / brass -- secondary accent
-          light: "#CBB07E",   // Light brass
-          dark: "#8A6E3E",    // Dark brass
-          50: "#FBF7EE",      // Faintest brass tint
-          100: "#F2EBDA",     // Light brass wash
-          200: "#DFCEA8",     // Pale brass
-          300: "#CBB07E",     // Light brass
-          400: "#B08D57",     // Brass
-          500: "#8A6E3E",     // Dark brass
-          600: "#6B5530",     // Deeper brass
-          700: "#4D3D22",     // Very dark brass
+          DEFAULT: "#B08D57",
+          light: "#CBB07E",
+          dark: "#8A6E3E",
+          50: "#FBF7EE",
+          100: "#F2EBDA",
+          200: "#DFCEA8",
+          300: "#CBB07E",
+          400: "#B08D57",
+          500: "#8A6E3E",
+          600: "#6B5530",
+          700: "#4D3D22",
         },
+
+        // ---- Theme-dependent colors (CSS custom properties) ----
         cream: {
-          DEFAULT: "#FAF6F0", // Primary warm surface
-          50: "#FEFDFB",      // Near-white warm
-          100: "#FAF6F0",     // Cream
-          200: "#F3ECE1",     // Deeper cream
-          300: "#E8DDD0",     // Warm tan
-          400: "#D4C5B3",     // Sand
+          DEFAULT: "rgb(var(--cream) / <alpha-value>)",
+          50: "rgb(var(--cream-50) / <alpha-value>)",
+          100: "rgb(var(--cream-100) / <alpha-value>)",
+          200: "rgb(var(--cream-200) / <alpha-value>)",
+          300: "rgb(var(--cream-300) / <alpha-value>)",
+          400: "rgb(var(--cream-400) / <alpha-value>)",
         },
         stone: {
-          DEFAULT: "#6B5D52", // Warm neutral -- body text
-          50: "#FAF6F0",      // Maps to cream for surface
-          100: "#F3ECE1",     // Light warm gray
-          200: "#E8DDD0",     // Warm light gray
-          300: "#D4C5B3",     // Warm medium light
-          400: "#A89888",     // Warm medium gray
-          500: "#8A7B6C",     // Warm gray
-          600: "#6B5D52",     // Body text color
-          700: "#524840",     // Dark warm gray
-          800: "#3A332E",     // Very dark warm
-          900: "#231F1B",     // Near black warm
-          950: "#15120F",     // Deepest warm black
+          DEFAULT: "rgb(var(--stone) / <alpha-value>)",
+          50: "rgb(var(--stone-50) / <alpha-value>)",
+          100: "rgb(var(--stone-100) / <alpha-value>)",
+          200: "rgb(var(--stone-200) / <alpha-value>)",
+          300: "rgb(var(--stone-300) / <alpha-value>)",
+          400: "rgb(var(--stone-400) / <alpha-value>)",
+          500: "rgb(var(--stone-500) / <alpha-value>)",
+          600: "rgb(var(--stone-600) / <alpha-value>)",
+          700: "rgb(var(--stone-700) / <alpha-value>)",
+          800: "rgb(var(--stone-800) / <alpha-value>)",
+          900: "rgb(var(--stone-900) / <alpha-value>)",
+          950: "rgb(var(--stone-950) / <alpha-value>)",
         },
       },
       fontFamily: {
@@ -67,7 +70,6 @@ const config: Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Major-third scale (1.250 ratio) from 16px base
         xs: ["12px", { lineHeight: "1.5" }],
         sm: ["14px", { lineHeight: "1.6" }],
         base: ["16px", { lineHeight: "1.7" }],
@@ -79,21 +81,24 @@ const config: Config = {
         "5xl": ["49px", { lineHeight: "1.1" }],
       },
       spacing: {
-        18: "4.5rem",  // 72px
-        22: "5.5rem",  // 88px
-        26: "6.5rem",  // 104px
-        30: "7.5rem",  // 120px
+        18: "4.5rem",
+        22: "5.5rem",
+        26: "6.5rem",
+        30: "7.5rem",
       },
       borderRadius: {
-        DEFAULT: "0.5rem",   // 8px -- token corner.radius lower bound
-        lg: "0.625rem",      // 10px
-        xl: "0.75rem",       // 12px -- token corner.radius upper bound
+        DEFAULT: "0.5rem",
+        lg: "0.625rem",
+        xl: "0.75rem",
       },
       boxShadow: {
         warm: "0 1px 3px 0 rgba(107, 93, 82, 0.08), 0 1px 2px -1px rgba(107, 93, 82, 0.08)",
-        "warm-md": "0 4px 6px -1px rgba(107, 93, 82, 0.08), 0 2px 4px -2px rgba(107, 93, 82, 0.06)",
-        "warm-lg": "0 10px 15px -3px rgba(107, 93, 82, 0.08), 0 4px 6px -4px rgba(107, 93, 82, 0.04)",
-        "warm-xl": "0 20px 25px -5px rgba(107, 93, 82, 0.08), 0 8px 10px -6px rgba(107, 93, 82, 0.04)",
+        "warm-md":
+          "0 4px 6px -1px rgba(107, 93, 82, 0.08), 0 2px 4px -2px rgba(107, 93, 82, 0.06)",
+        "warm-lg":
+          "0 10px 15px -3px rgba(107, 93, 82, 0.08), 0 4px 6px -4px rgba(107, 93, 82, 0.04)",
+        "warm-xl":
+          "0 20px 25px -5px rgba(107, 93, 82, 0.08), 0 8px 10px -6px rgba(107, 93, 82, 0.04)",
       },
       transitionDuration: {
         "250": "250ms",

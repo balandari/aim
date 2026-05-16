@@ -88,9 +88,9 @@ export default function GalleryPage() {
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                       className="w-full h-auto transition-transform duration-350 ease-gentle group-hover:scale-[1.03]"
                     />
-                    {/* Hover overlay with caption */}
-                    <div className="absolute inset-0 bg-stone-950/0 group-hover:bg-stone-950/40 transition-colors duration-350 ease-gentle flex items-end">
-                      <span className="px-4 py-3 text-cream-50 font-sans text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-350 ease-gentle">
+                    {/* Hover overlay — uses black so it works in both themes */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-350 ease-gentle flex items-end">
+                      <span className="px-4 py-3 text-white font-sans text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-350 ease-gentle">
                         {image.caption}
                       </span>
                     </div>

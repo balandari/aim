@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
@@ -134,9 +136,14 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Theme toggle */}
+        <div className="mt-12 flex justify-center">
+          <ThemeToggle />
+        </div>
+
         {/* Bottom */}
-        <div className="mt-16 pt-6 border-t border-stone-800">
-          <p className="text-center text-stone-600 font-sans text-xs tracking-wide">
+        <div className="mt-6 pt-6 border-t border-stone-700">
+          <p className="text-center text-stone-500 font-sans text-xs tracking-wide">
             A Mike Ramsey Jr. Production
           </p>
         </div>
@@ -187,4 +194,3 @@ function TikTokIcon() {
     </svg>
   );
 }
-

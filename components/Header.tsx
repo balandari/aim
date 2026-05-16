@@ -35,16 +35,12 @@ export default function Header() {
     return pathname.startsWith(href);
   }
 
-  const isHome = pathname === "/";
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-gentle ${
         scrolled
           ? "bg-stone-950/95 backdrop-blur-md shadow-lg shadow-black/20"
-          : isHome
-            ? "bg-transparent"
-            : "bg-stone-950"
+          : "bg-stone-950"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -118,10 +114,15 @@ export default function Header() {
       {/* Mobile menu */}
       <div
         className={`md:hidden fixed inset-0 top-16 z-40 transition-all duration-350 ease-gentle ${
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          mobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
+        <div
+          className="absolute inset-0 bg-black/60"
+          onClick={() => setMobileOpen(false)}
+        />
         <nav
           className={`relative bg-stone-950 border-t border-brass/20 shadow-2xl transition-transform duration-350 ease-gentle ${
             mobileOpen ? "translate-y-0" : "-translate-y-4"
@@ -146,7 +147,9 @@ export default function Header() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={`block py-3 text-lg font-sans tracking-wide transition-colors duration-250 ${
-                    isActive(link.href) ? "text-brass font-semibold" : "text-cream-200 hover:text-brass"
+                    isActive(link.href)
+                      ? "text-brass font-semibold"
+                      : "text-cream-200 hover:text-brass"
                   }`}
                 >
                   {link.label}

@@ -3,25 +3,82 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-earth: #9E4A2F;
-    --color-brass: #B08D57;
-    --color-cream: #FAF6F0;
-    --color-stone-body: #6B5D52;
+  /* ===== Dark Theme (default) ===== */
+  .dark {
+    --stone-50: 250 246 240;
+    --stone-100: 243 236 225;
+    --stone-200: 232 221 208;
+    --stone-300: 212 197 179;
+    --stone-400: 168 152 136;
+    --stone-500: 138 123 108;
+    --stone-600: 107 93 82;
+    --stone-700: 82 72 64;
+    --stone-800: 58 51 46;
+    --stone-900: 35 31 27;
+    --stone-950: 21 18 15;
+    --stone: 107 93 82;
+
+    --cream: 250 246 240;
+    --cream-50: 254 253 251;
+    --cream-100: 250 246 240;
+    --cream-200: 243 236 225;
+    --cream-300: 232 221 208;
+    --cream-400: 212 197 179;
+  }
+
+  /* ===== Light Theme ===== */
+  :root:not(.dark) {
+    /* Backgrounds: dark slots → warm light surfaces */
+    --stone-950: 250 246 240;   /* page bg → cream */
+    --stone-900: 243 236 225;   /* section bg → off-cream */
+    --stone-800: 255 255 255;   /* card bg → white */
+    --stone-700: 222 213 200;   /* borders → warm tan */
+
+    /* Neutral midtones: stay the same */
+    --stone-600: 107 93 82;
+    --stone-500: 138 123 108;
+    --stone-400: 168 152 136;
+    --stone-300: 212 197 179;
+    --stone-200: 232 221 208;
+    --stone-100: 243 236 225;
+    --stone-50: 250 246 240;
+    --stone: 107 93 82;
+
+    /* Text: light slots → dark text */
+    --cream: 250 246 240;       /* surface reference */
+    --cream-50: 35 31 27;       /* headings → near-black */
+    --cream-100: 58 51 46;      /* strong text */
+    --cream-200: 107 93 82;     /* body text → warm gray */
+    --cream-300: 138 123 108;   /* muted text */
+    --cream-400: 168 152 136;   /* faint text */
+  }
+
+  /* ===== Always-dark context (hero, image overlays) ===== */
+  .always-dark {
+    --stone-950: 21 18 15;
+    --stone-900: 35 31 27;
+    --stone-800: 58 51 46;
+    --stone-700: 82 72 64;
+    --cream-50: 254 253 251;
+    --cream-100: 250 246 240;
+    --cream-200: 243 236 225;
+    --cream-300: 232 221 208;
+    --cream-400: 212 197 179;
   }
 
   * {
-    @apply border-stone-700;
+    border-color: rgb(var(--stone-700));
   }
 
   body {
-    @apply bg-stone-950 text-cream-200 font-sans;
+    background-color: rgb(var(--stone-950));
+    color: rgb(var(--cream-200));
     font-size: 16px;
     line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-cream-50;
+    color: rgb(var(--cream-50));
   }
 
   h1, h2 {
@@ -32,17 +89,32 @@
     @apply font-serif font-bold;
   }
 
+  /* Link colors: theme-dependent (not CSS-variable-based since brass/earth are fixed) */
+  .dark a {
+    color: #CBB07E;
+  }
+  .dark a:hover {
+    color: #B08D57;
+  }
+  :root:not(.dark) a {
+    color: #9E4A2F;
+  }
+  :root:not(.dark) a:hover {
+    color: #7A3621;
+  }
+
   a {
-    @apply text-brass-light transition-colors duration-250 ease-gentle;
+    @apply transition-colors duration-250 ease-gentle;
   }
 
-  a:hover {
-    @apply text-brass;
-  }
-
-  ::selection {
+  .dark ::selection {
     background-color: rgba(176, 141, 87, 0.25);
-    color: #FAF6F0;
+    color: #FEFDFB;
+  }
+
+  :root:not(.dark) ::selection {
+    background-color: rgba(158, 74, 47, 0.15);
+    color: #231F1B;
   }
 }
 

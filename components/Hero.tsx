@@ -42,66 +42,67 @@ export default function Hero() {
         sizes="100vw"
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-stone-950/65" />
+      {/* Always-dark overlays (don't change with theme) */}
+      <div className="always-dark">
+        <div className="absolute inset-0 bg-stone-950/65" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(21,18,15,0.5)_100%)]" />
+      </div>
 
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(21,18,15,0.5)_100%)]" />
+      {/* Content — always-dark keeps text light on the dark hero */}
+      <div className="always-dark">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-6 max-w-4xl">
+            {/* Top ornament */}
+            <OrnamentDivider className="mb-8" wide />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center px-6 max-w-4xl">
-          {/* Top ornament */}
-          <OrnamentDivider className="mb-8" wide />
+            {/* Title */}
+            <h1 className="font-display text-cream-50 leading-[0.9] tracking-wide">
+              <span
+                className="block"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 7rem)" }}
+              >
+                ANTIQUES
+              </span>
+              <span
+                className="block text-brass mt-1"
+                style={{
+                  fontSize: "clamp(1.5rem, 4.5vw, 3.5rem)",
+                  letterSpacing: "0.3em",
+                }}
+              >
+                IN MOORE
+              </span>
+            </h1>
 
-          {/* Title */}
-          <h1 className="font-display text-cream-50 leading-[0.9] tracking-wide">
-            <span
-              className="block"
-              style={{ fontSize: "clamp(2.5rem, 9vw, 7rem)" }}
-            >
-              ANTIQUES
-            </span>
-            <span
-              className="block text-brass mt-1"
-              style={{
-                fontSize: "clamp(1.5rem, 4.5vw, 3.5rem)",
-                letterSpacing: "0.3em",
-              }}
-            >
-              IN MOORE
-            </span>
-          </h1>
+            {/* Bottom ornament */}
+            <OrnamentDivider className="mt-6 mb-8" />
 
-          {/* Bottom ornament */}
-          <OrnamentDivider className="mt-6 mb-8" />
+            {/* Tagline */}
+            <p className="text-cream-200/90 font-serif italic text-lg md:text-xl tracking-wide">
+              Curated Vintage &amp; Collectibles Since 2024
+            </p>
 
-          {/* Tagline */}
-          <p className="text-cream-200/90 font-serif italic text-lg md:text-xl tracking-wide">
-            Curated Vintage &amp; Collectibles Since 2024
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/gallery"
-              className="inline-flex items-center px-8 py-3.5 bg-brass text-stone-950 font-sans font-semibold text-sm tracking-[0.15em] uppercase rounded-sm hover:bg-brass-light transition-all duration-300 ease-gentle shadow-lg shadow-brass/20"
-            >
-              Browse Collection
-            </Link>
-            <a
-              href="#events"
-              className="inline-flex items-center px-8 py-3.5 border border-cream-200/30 text-cream-100 font-sans font-semibold text-sm tracking-[0.15em] uppercase rounded-sm hover:border-brass/50 hover:text-brass transition-all duration-300 ease-gentle backdrop-blur-sm"
-            >
-              Upcoming Events
-            </a>
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link
+                href="/gallery"
+                className="inline-flex items-center px-8 py-3.5 bg-brass text-stone-950 font-sans font-semibold text-sm tracking-[0.15em] uppercase rounded-sm hover:bg-brass-light transition-all duration-300 ease-gentle shadow-lg shadow-brass/20"
+              >
+                Browse Collection
+              </Link>
+              <a
+                href="#events"
+                className="inline-flex items-center px-8 py-3.5 border border-cream-200/30 text-cream-100 font-sans font-semibold text-sm tracking-[0.15em] uppercase rounded-sm hover:border-brass/50 hover:text-brass transition-all duration-300 ease-gentle backdrop-blur-sm"
+              >
+                Upcoming Events
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom fade to next section */}
+      {/* Bottom fade — adapts to theme so it matches the next section */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-900 to-transparent" />
     </section>
   );
 }
-
