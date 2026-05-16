@@ -23,7 +23,7 @@ const props = [
   },
   {
     icon: CalendarIcon,
-    value: "Est. 1998",
+    value: "Est. 2024",
     label: "Serving Oklahoma",
   },
   {
@@ -136,3 +136,4 @@ function ClockIcon() {
     </svg>
   );
 }
+

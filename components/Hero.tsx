@@ -78,7 +78,7 @@ export default function Hero() {
 
           {/* Tagline */}
           <p className="text-cream-200/90 font-serif italic text-lg md:text-xl tracking-wide">
-            Curated Vintage &amp; Collectibles Since 1998
+            Curated Vintage &amp; Collectibles Since 2024
           </p>
 
           {/* CTAs */}
@@ -104,3 +104,4 @@ export default function Hero() {
     </section>
   );
 }
+

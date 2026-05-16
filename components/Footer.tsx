@@ -33,7 +33,7 @@ export default function Footer() {
             Antiques <span className="text-brass">in</span> Moore
           </h2>
           <p className="mt-2 text-stone-500 font-sans text-sm">
-            Curated vintage &amp; collectibles since 1998
+            Curated vintage &amp; collectibles since 2024
           </p>
         </div>
 
@@ -187,3 +187,4 @@ function TikTokIcon() {
     </svg>
   );
 }
+
