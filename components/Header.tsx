@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Events", href: "#events" },
-  { label: "Vendors", href: "#community" },
-  { label: "Contact", href: "#footer" },
+  { label: "Events", href: "/#events" },
+  { label: "Vendors", href: "/#community" },
+  { label: "Contact", href: "/#footer" },
 ];
 
 export default function Header() {
@@ -32,7 +32,7 @@ export default function Header() {
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
-    if (href.startsWith("#")) return false;
+    if (href.startsWith("/#")) return false;
     return pathname.startsWith(href);
   }
 
