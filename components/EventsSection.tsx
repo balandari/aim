@@ -1,35 +1,57 @@
 import Image from "next/image";
 import { getUpcomingEvents, defaultHours } from "@/data/events";
 
+function SectionOrnament({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-3 ${className}`}>
+      <div className="w-8 h-px bg-brass/40" />
+      <svg
+        className="w-2 h-2 text-brass/60"
+        viewBox="0 0 8 8"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 4)" />
+      </svg>
+      <div className="w-8 h-px bg-brass/40" />
+    </div>
+  );
+}
+
 export default function EventsSection() {
   const upcoming = getUpcomingEvents();
 
   return (
-    <section id="events" className="py-16 md:py-22 lg:py-26">
+    <section id="events" className="py-20 md:py-28 bg-stone-950">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Section heading */}
-        <div className="mb-12 md:mb-16">
-          <span className="text-earth text-xs font-sans font-semibold tracking-[0.2em] uppercase">
+        <div className="mb-14 md:mb-18 text-center">
+          <span className="text-brass text-xs font-sans font-semibold tracking-[0.25em] uppercase">
             What&apos;s Happening
           </span>
-          <h2 className="mt-3 font-display text-stone-900 text-3xl md:text-4xl lg:text-5xl text-balance">
+          <h2 className="mt-4 font-display text-cream-50 text-4xl md:text-5xl tracking-wide">
             Upcoming Events
           </h2>
+          <SectionOrnament className="mt-5 justify-center" />
         </div>
 
         {upcoming.length > 0 ? (
           <div className="grid gap-8 md:gap-10">
             {upcoming.map((event) => {
               const eventDate = new Date(event.date + "T12:00:00");
-              const month = eventDate.toLocaleDateString("en-US", { month: "short" });
+              const month = eventDate.toLocaleDateString("en-US", {
+                month: "short",
+              });
               const day = eventDate.getDate();
-              const weekday = eventDate.toLocaleDateString("en-US", { weekday: "long" });
+              const weekday = eventDate.toLocaleDateString("en-US", {
+                weekday: "long",
+              });
 
               if (event.isFeatured) {
                 return (
                   <article
                     key={event.id}
-                    className="relative bg-cream-50 border border-stone-200 rounded-xl overflow-hidden shadow-warm-md"
+                    className="relative bg-stone-900/80 border border-brass/15 rounded-sm overflow-hidden shadow-2xl shadow-black/30"
                   >
                     <div className="flex flex-col lg:flex-row">
                       {/* Flyer image column */}
@@ -49,13 +71,13 @@ export default function EventsSection() {
 
                       {/* Event details column */}
                       <div className="flex-1 p-8 md:p-10 lg:p-12">
-                        {/* Featured badge + date */}
+                        {/* Featured badge + weather */}
                         <div className="flex flex-wrap items-center gap-3 mb-4">
-                          <span className="inline-block bg-earth/10 text-earth text-xs font-sans font-semibold tracking-wider uppercase px-3 py-1 rounded">
+                          <span className="inline-block bg-brass/15 text-brass text-xs font-sans font-semibold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm border border-brass/20">
                             Featured Event
                           </span>
                           {event.weatherNote && (
-                            <span className="inline-block bg-amber-50 text-amber-700 text-xs font-sans font-medium tracking-wide px-3 py-1 rounded border border-amber-200">
+                            <span className="inline-block bg-amber-900/20 text-amber-400 text-xs font-sans font-medium tracking-wide px-3 py-1.5 rounded-sm border border-amber-700/30">
                               ☀️ {event.weatherNote}
                             </span>
                           )}
@@ -63,21 +85,21 @@ export default function EventsSection() {
 
                         {/* Date display */}
                         <div className="flex items-baseline gap-3 mb-5">
-                          <span className="font-display text-stone-900 text-4xl md:text-5xl leading-none">
+                          <span className="font-display text-cream-50 text-4xl md:text-5xl leading-none tracking-wide">
                             {month} {day}
                           </span>
-                          <span className="text-stone-500 font-sans text-lg">
+                          <span className="text-stone-400 font-sans text-lg">
                             {weekday}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-serif font-bold text-stone-900 text-2xl md:text-3xl">
+                        <h3 className="font-serif font-bold text-cream-50 text-2xl md:text-3xl">
                           {event.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="mt-4 text-stone-600 font-sans text-base md:text-lgleading-relaxed max-w-2xl">
+                        <p className="mt-4 text-cream-300/80 font-sans text-base md:text-lg leading-relaxed max-w-2xl">
                           {event.description}
                         </p>
 
@@ -87,7 +109,7 @@ export default function EventsSection() {
                             {event.highlights.map((h) => (
                               <span
                                 key={h}
-                                className="inline-flex items-center gap-1.5 bg-stone-100 text-stone-700 text-xs font-sans font-medium tracking-wide px-3 py-1.5 rounded-full"
+                                className="inline-flex items-center gap-1.5 bg-stone-800 text-cream-200 text-xs font-sans font-medium tracking-wide px-3 py-1.5 rounded-sm border border-stone-700"
                               >
                                 <StarIcon />
                                 {h}
@@ -97,7 +119,7 @@ export default function EventsSection() {
                         )}
 
                         {/* Time + Location */}
-                        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-sans text-stone-500">
+                        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-sans text-stone-400">
                           <span className="flex items-center gap-1.5">
                             <ClockIcon />
                             {event.time}
@@ -110,12 +132,12 @@ export default function EventsSection() {
 
                         {/* Vendor info callout */}
                         {event.vendorInfo && (
-                          <div className="mt-8 bg-stone-50 border border-stone-200 rounded-lg p-5">
-                            <h4 className="text-stone-900 font-sans font-semibold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+                          <div className="mt-8 bg-stone-800/60 border border-brass/15 rounded-sm p-5">
+                            <h4 className="text-brass font-sans font-semibold text-sm uppercase tracking-[0.15em] mb-2 flex items-center gap-2">
                               <TentIcon />
                               Want a Booth?
                             </h4>
-                            <p className="text-stone-600 font-sans text-sm leading-relaxed">
+                            <p className="text-cream-300/80 font-sans text-sm leading-relaxed">
                               {event.vendorInfo}
                             </p>
                           </div>
@@ -129,28 +151,25 @@ export default function EventsSection() {
               return (
                 <article
                   key={event.id}
-                  className="bg-cream-50 border border-stone-200 rounded-lg p-6 md:p-8 shadow-warm"
+                  className="bg-stone-900/60 border border-stone-800 rounded-sm p-6 md:p-8 shadow-lg shadow-black/20"
                 >
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                    {/* Date badge */}
                     <div className="flex sm:flex-col items-center gap-2 sm:gap-1 sm:w-16 flex-shrink-0">
-                      <span className="text-earth font-sans font-bold text-xs uppercase tracking-wider">
+                      <span className="text-brass font-sans font-bold text-xs uppercase tracking-[0.15em]">
                         {month}
                       </span>
-                      <span className="font-display text-stone-900 text-3xl leading-none">
+                      <span className="font-display text-cream-50 text-3xl leading-none">
                         {day}
                       </span>
                     </div>
-
-                    {/* Details */}
                     <div className="flex-1">
-                      <h3 className="font-serif font-bold text-stone-900 text-xl">
+                      <h3 className="font-serif font-bold text-cream-50 text-xl">
                         {event.title}
                       </h3>
-                      <p className="mt-2 text-stone-600 font-sans text-base leading-relaxed">
+                      <p className="mt-2 text-cream-300/70 font-sans text-base leading-relaxed">
                         {event.description}
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm font-sans text-stone-500">
+                      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm font-sans text-stone-400">
                         <span className="flex items-center gap-1.5">
                           <ClockIcon />
                           {event.time}
@@ -167,20 +186,18 @@ export default function EventsSection() {
             })}
           </div>
         ) : (
-          /* Fallback: no upcoming events */
-          <article className="bg-cream-50 border border-stone-200 rounded-xl p-8 md:p-10 shadow-warm-md max-w-2xl">
-            <h3 className="font-serif font-bold text-stone-900 text-2xl">
+          <article className="bg-stone-900/60 border border-brass/15 rounded-sm p-8 md:p-10 shadow-lg max-w-2xl mx-auto text-center">
+            <h3 className="font-serif font-bold text-cream-50 text-2xl">
               Open Every Weekend
             </h3>
-            <p className="mt-3 text-stone-600 font-sans text-base leading-relaxed">
-              No special events scheduled right now, but our doors are open every weekend.
-              Come browse 20+ vendors and discover something unexpected.
+            <p className="mt-3 text-cream-300/80 font-sans text-base leading-relaxed">
+              No special events scheduled right now, but our doors are open
+              every weekend. Come browse 20+ vendors and discover something
+              unexpected.
             </p>
-            <div className="mt-6 space-y-2 text-sm font-sans">
-              <div className="flex items-center gap-3 text-stone-700">
-                <ClockIcon />
-                <span>Saturday &amp; Sunday: {defaultHours.weekend}</span>
-              </div>
+            <div className="mt-6 inline-flex items-center gap-3 text-sm font-sans text-cream-200">
+              <ClockIcon />
+              <span>Saturday &amp; Sunday: {defaultHours.weekend}</span>
             </div>
           </article>
         )}
@@ -189,7 +206,7 @@ export default function EventsSection() {
   );
 }
 
-/* Inline SVG icons -- keeps the component self-contained, no icon library needed */
+/* Inline SVG icons */
 
 function ClockIcon() {
   return (

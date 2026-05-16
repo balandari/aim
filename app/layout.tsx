@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Libre_Caslon_Display, Libre_Caslon_Text, Source_Sans_3 } from "next/font/google";
+import { Playfair_Display, Libre_Caslon_Text, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const libreCaslonDisplay = Libre_Caslon_Display({
-  weight: "400",
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif-display",
   display: "swap",
@@ -36,9 +35,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${libreCaslonDisplay.variable} ${libreCaslonText.variable} ${sourceSans.variable}`}
+      className={`${playfairDisplay.variable} ${libreCaslonText.variable} ${sourceSans.variable}`}
     >
-      <body className="antialiased bg-cream font-sans text-stone-700">
+      <body className="antialiased">
         {children}
       </body>
     </html>

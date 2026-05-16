@@ -19,13 +19,12 @@ export default function Header() {
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 16);
+      setScrolled(window.scrollY > 40);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
@@ -36,22 +35,25 @@ export default function Header() {
     return pathname.startsWith(href);
   }
 
+  const isHome = pathname === "/";
+
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-350 ease-gentle ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-gentle ${
         scrolled
-          ? "bg-cream/95 backdrop-blur-md shadow-warm"
-          : "bg-cream"
+          ? "bg-stone-950/95 backdrop-blur-md shadow-lg shadow-black/20"
+          : isHome
+            ? "bg-transparent"
+            : "bg-stone-950"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Text logo */}
-          <Link
-            href="/"
-            className="font-display text-2xl md:text-3xl text-stone-900 hover:text-earth transition-colors duration-250 ease-gentle"
-          >
-            Antiques in Moore
+          {/* Logo */}
+          <Link href="/" className="group flex items-center gap-3">
+            <span className="font-display text-xl md:text-2xl text-cream-50 tracking-wide group-hover:text-brass transition-colors duration-250">
+              Antiques <span className="text-brass">in</span> Moore
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -63,7 +65,7 @@ export default function Header() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-sans tracking-wide transition-colors duration-250 ease-gentle text-stone-600 hover:text-earth"
+                  className="text-sm font-sans tracking-[0.1em] uppercase transition-colors duration-250 ease-gentle text-cream-200/80 hover:text-brass"
                 >
                   {link.label}
                 </a>
@@ -71,10 +73,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-sans tracking-wide transition-colors duration-250 ease-gentle ${
+                  className={`text-sm font-sans tracking-[0.1em] uppercase transition-colors duration-250 ease-gentle ${
                     isActive(link.href)
-                      ? "text-earth font-semibold"
-                      : "text-stone-600 hover:text-earth"
+                      ? "text-brass font-semibold"
+                      : "text-cream-200/80 hover:text-brass"
                   }`}
                 >
                   {link.label}
@@ -83,16 +85,15 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Mobile hamburger button */}
+          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center text-stone-700 hover:text-earth transition-colors duration-250 ease-gentle"
+            className="md:hidden relative w-10 h-10 flex items-center justify-center text-cream-200 hover:text-brass transition-colors duration-250"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
             <span className="sr-only">{mobileOpen ? "Close" : "Menu"}</span>
-            {/* Hamburger / X icon */}
             <span className="block w-6 h-5 relative">
               <span
                 className={`absolute left-0 h-0.5 w-6 bg-current transition-all duration-250 ease-gentle ${
@@ -100,7 +101,7 @@ export default function Header() {
                 }`}
               />
               <span
-                className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition-opacity duration-250 ease-gentle ${
+                className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition-opacity duration-250 ${
                   mobileOpen ? "opacity-0" : "opacity-100"
                 }`}
               />
@@ -114,23 +115,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu */}
       <div
         className={`md:hidden fixed inset-0 top-16 z-40 transition-all duration-350 ease-gentle ${
-          mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-stone-900/40"
-          onClick={() => setMobileOpen(false)}
-        />
-
-        {/* Panel */}
+        <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
         <nav
-          className={`relative bg-cream border-t border-stone-200 shadow-warm-lg transition-transform duration-350 ease-gentle ${
+          className={`relative bg-stone-950 border-t border-brass/20 shadow-2xl transition-transform duration-350 ease-gentle ${
             mobileOpen ? "translate-y-0" : "-translate-y-4"
           }`}
         >
@@ -143,7 +136,7 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-lg font-sans transition-colors duration-250 ease-gentle text-stone-700 hover:text-earth"
+                  className="block py-3 text-lg font-sans tracking-wide text-cream-200 hover:text-brass transition-colors duration-250"
                 >
                   {link.label}
                 </a>
@@ -152,10 +145,8 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block py-3 text-lg font-sans transition-colors duration-250 ease-gentle ${
-                    isActive(link.href)
-                      ? "text-earth font-semibold"
-                      : "text-stone-700 hover:text-earth"
+                  className={`block py-3 text-lg font-sans tracking-wide transition-colors duration-250 ${
+                    isActive(link.href) ? "text-brass font-semibold" : "text-cream-200 hover:text-brass"
                   }`}
                 >
                   {link.label}

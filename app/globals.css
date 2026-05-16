@@ -11,17 +11,17 @@
   }
 
   * {
-    @apply border-stone-200;
+    @apply border-stone-700;
   }
 
   body {
-    @apply bg-cream text-stone-700 font-sans;
+    @apply bg-stone-950 text-cream-200 font-sans;
     font-size: 16px;
     line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-stone-900;
+    @apply text-cream-50;
   }
 
   h1, h2 {
@@ -33,16 +33,16 @@
   }
 
   a {
-    @apply text-earth transition-colors duration-250 ease-gentle;
+    @apply text-brass-light transition-colors duration-250 ease-gentle;
   }
 
   a:hover {
-    @apply text-earth-dark;
+    @apply text-brass;
   }
 
   ::selection {
-    background-color: rgba(158, 74, 47, 0.15);
-    color: #3A332E;
+    background-color: rgba(176, 141, 87, 0.25);
+    color: #FAF6F0;
   }
 }
 
