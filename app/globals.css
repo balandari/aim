@@ -29,10 +29,10 @@
   /* ===== Light Theme ===== */
   :root:not(.dark) {
     /* Backgrounds: dark slots → warm light surfaces */
-    --stone-950: 250 246 240;   /* page bg → cream */
-    --stone-900: 243 236 225;   /* section bg → off-cream */
+    --stone-950: 255 255 255;   /* page bg → white */
+    --stone-900: 247 247 245;   /* section bg → barely off-white */
     --stone-800: 255 255 255;   /* card bg → white */
-    --stone-700: 222 213 200;   /* borders → warm tan */
+    --stone-700: 229 228 226;   /* borders → neutral light gray */
 
     /* Neutral midtones: stay the same */
     --stone-600: 107 93 82;
