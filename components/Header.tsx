@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
   { label: "Events", href: "/#events" },
-  { label: "Vendors", href: "/#community" },
+  { label: "Vendors", href: "https://aimvendors.com", external: true },
   { label: "Contact", href: "/#footer" },
 ];
 
@@ -56,19 +56,31 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-sans tracking-wide transition-colors duration-250 ease-gentle ${
-                  isActive(link.href)
-                    ? "text-earth font-semibold"
-                    : "text-stone-600 hover:text-earth"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-sans tracking-wide transition-colors duration-250 ease-gentle text-stone-600 hover:text-earth"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-sans tracking-wide transition-colors duration-250 ease-gentle ${
+                    isActive(link.href)
+                      ? "text-earth font-semibold"
+                      : "text-stone-600 hover:text-earth"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Mobile hamburger button */}
@@ -123,20 +135,33 @@ export default function Header() {
           }`}
         >
           <div className="px-6 py-8 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`block py-3 text-lg font-sans transition-colors duration-250 ease-gentle ${
-                  isActive(link.href)
-                    ? "text-earth font-semibold"
-                    : "text-stone-700 hover:text-earth"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-3 text-lg font-sans transition-colors duration-250 ease-gentle text-stone-700 hover:text-earth"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block py-3 text-lg font-sans transition-colors duration-250 ease-gentle ${
+                    isActive(link.href)
+                      ? "text-earth font-semibold"
+                      : "text-stone-700 hover:text-earth"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
         </nav>
       </div>
