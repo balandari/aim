@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -46,7 +47,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-3">
+          <Link href="/" className="group flex items-center gap-2.5">
+            <Image
+              src="/logo.png"
+              alt="Antiques in Moore logo"
+              width={40}
+              height={40}
+              className="rounded-md md:w-11 md:h-11"
+              priority
+            />
             <span className="font-display text-xl md:text-2xl text-cream-50 tracking-wide group-hover:text-brass transition-colors duration-250">
               Antiques <span className="text-brass">in</span> Moore
             </span>
