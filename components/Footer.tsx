@@ -1,11 +1,11 @@
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
-const quickLinks = [
+const quickLinks: Array<{ label: string; href: string; external?: boolean }> = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
   { label: "Events", href: "#events" },
-  { label: "Vendors", href: "https://aimvendors.com", external: true },
+  { label: "Vendors", href: "/vendors" },
 ];
 
 const socialLinks = [

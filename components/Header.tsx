@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
+const navLinks: Array<{ label: string; href: string; external?: boolean }> = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
   { label: "Events", href: "/#events" },
-  { label: "Vendors", href: "https://aimvendors.com", external: true },
+  { label: "Vendors", href: "/vendors" },
   { label: "Contact", href: "/#footer" },
 ];
 
