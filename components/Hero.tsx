@@ -28,10 +28,10 @@ function OrnamentDivider({ className = "", wide = false }: { className?: string;
 
 export default function Hero() {
   return (
-    <section className="w-full px-6 md:px-10 pt-6 md:pt-10">
+    <section className="w-full px-6 md:px-10 pt-24 md:pt-28">
       <div
         className="relative max-w-7xl mx-auto overflow-hidden rounded-2xl"
-        style={{ minHeight: "clamp(500px, 80vh, 850px)" }}
+        style={{ minHeight: "clamp(500px, 75vh, 800px)" }}
       >
         {/* Background image */}
         <Image
