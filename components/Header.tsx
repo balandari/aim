@@ -53,7 +53,7 @@ export default function Header() {
               alt="Antiques in Moore logo"
               width={40}
               height={40}
-              className="rounded-md md:w-11 md:h-11"
+              className="md:w-11 md:h-11"
               priority
             />
             <span className="font-display text-xl md:text-2xl text-cream-50 tracking-wide group-hover:text-brass transition-colors duration-250">

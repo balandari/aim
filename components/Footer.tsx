@@ -37,7 +37,7 @@ export default function Footer() {
             alt="Antiques in Moore logo"
             width={56}
             height={56}
-            className="rounded-lg"
+            className=""
           />
           <div>
             <h2 className="font-display text-cream-50 text-2xl md:text-3xl tracking-wide">
