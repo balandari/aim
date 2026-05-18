@@ -33,6 +33,16 @@ export interface ItemWithVendor extends Item {
   vendors: Vendor;
 }
 
+export interface GalleryPhoto {
+  item_id: string;
+  item_title: string | null;
+  price: string | null;
+  photo_url: string;
+  created_at: string;
+  vendor_id: string;
+  vendor_name: string;
+}
+
 export interface InquirySubmission {
   itemId: string;
   name: string;

@@ -1,16 +1,20 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
-import dynamic from "next/dynamic";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { galleryImages } from "@/data/gallery";
-
-const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
-  ssr: false,
-});
+import StoreHighlights from "@/components/gallery/StoreHighlights";
+import { getGalleryPhotos } from "@/lib/vendors";
+import type { GalleryPhoto } from "@/lib/types";
 import "yet-another-react-lightbox/styles.css";
+
+export const metadata: Metadata = {
+  title: "Gallery | Vendor Finds & Store Highlights | Antiques in Moore",
+  description:
+    "Browse vendor-uploaded finds and curated store highlights from Antiques in Moore in Moore, Oklahoma.",
+};
+
+export const revalidate = 300;
 
 function SectionOrnament({ className = "" }: { className?: string }) {
   return (
@@ -22,32 +26,66 @@ function SectionOrnament({ className = "" }: { className?: string }) {
         fill="currentColor"
         aria-hidden="true"
       >
-        <rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 4)" />
+        <rect
+          x="4"
+          y="0"
+          width="5.66"
+          height="5.66"
+          rx="0.5"
+          transform="rotate(45 4 4)"
+        />
       </svg>
       <div className="w-8 h-px bg-brass/40" />
     </div>
   );
 }
 
-export default function GalleryPage() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
+function formatPrice(price: string) {
+  return price.trim().startsWith("$") ? price.trim() : `$${price.trim()}`;
+}
 
-  const slides = galleryImages.map((img) => ({
-    src: img.src,
-    alt: img.alt,
-  }));
+function GalleryCard({ photo }: { photo: GalleryPhoto }) {
+  const label = photo.item_title || photo.vendor_name;
+  const formattedPrice = photo.price?.trim() ? formatPrice(photo.price) : null;
 
-  function handleImageClick(index: number) {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  }
+  return (
+    <Link
+      href={`/items/${photo.item_id}`}
+      className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
+    >
+      <div className="relative aspect-[4/5] bg-stone-800 overflow-hidden">
+        <Image
+          src={photo.photo_url}
+          alt={label}
+          fill
+          className="object-cover transition-transform duration-350 ease-gentle group-hover:scale-[1.03]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/95 via-stone-950/60 to-transparent p-4">
+          <p className="font-serif text-cream-50 text-lg leading-tight group-hover:text-brass transition-colors duration-250">
+            {label}
+          </p>
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-sans">
+            <span className="text-cream-200/70">{photo.vendor_name}</span>
+            {formattedPrice && (
+              <span className="text-brass/90 font-semibold">
+                {formattedPrice}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default async function GalleryPage() {
+  const vendorPhotos = await getGalleryPhotos();
 
   return (
     <>
       <Header />
       <main className="bg-stone-950 min-h-screen pt-20">
-        {/* Page heading */}
         <section className="pt-12 pb-8 md:pt-18 md:pb-12">
           <div className="max-w-7xl mx-auto px-6 md:px-10 text-center">
             <span className="text-brass text-xs font-sans font-semibold tracking-[0.25em] uppercase">
@@ -58,56 +96,62 @@ export default function GalleryPage() {
             </h1>
             <SectionOrnament className="mt-5 justify-center" />
             <p className="mt-6 max-w-2xl mx-auto text-cream-300/80 font-sans text-lg leading-relaxed">
-              Step inside 8,000 square feet of curated finds. From vintage
-              jewelry and mid-century furniture to rare collectibles and fine
-              art, every visit reveals something new.
+              Explore fresh vendor finds alongside curated scenes from the store.
+              New treasures appear as vendors add photos from their booths.
             </p>
           </div>
         </section>
 
-        {/* Masonry grid */}
-        <section className="pb-16 md:pb-22 lg:pb-26">
+        <section className="pb-16 md:pb-22">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-4">
-              {galleryImages.map((image, index) => (
-                <div
-                  key={image.src}
-                  className="mb-4"
-                  style={{ breakInside: "avoid" }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => handleImageClick(index)}
-                    className="group relative block w-full overflow-hidden rounded-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brass focus:ring-offset-2 focus:ring-offset-stone-950"
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={600}
-                      height={400}
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                      className="w-full h-auto transition-transform duration-350 ease-gentle group-hover:scale-[1.03]"
-                    />
-                    {/* Hover overlay — uses black so it works in both themes */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-350 ease-gentle flex items-end">
-                      <span className="px-4 py-3 text-white font-sans text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-350 ease-gentle">
-                        {image.caption}
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              ))}
+            <div className="mb-8 md:mb-10">
+              <p className="text-brass text-xs font-sans font-semibold tracking-[0.25em] uppercase">
+                Fresh Finds
+              </p>
+              <h2 className="mt-3 font-display text-cream-50 text-3xl md:text-4xl tracking-wide">
+                Vendor Showcase
+              </h2>
+              <p className="mt-3 max-w-2xl text-cream-300/75 font-sans text-base leading-relaxed">
+                Recently posted vendor item photos. Tap any piece to see details
+                and ask about availability.
+              </p>
             </div>
+
+            {vendorPhotos.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+                {vendorPhotos.map((photo) => (
+                  <GalleryCard key={`${photo.item_id}-${photo.photo_url}`} photo={photo} />
+                ))}
+              </div>
+            ) : (
+              <div className="bg-stone-900/50 border border-brass/15 rounded-sm p-6 md:p-8">
+                <p className="text-cream-300/80 font-sans text-base leading-relaxed">
+                  Vendor photos are not available right now, but the curated
+                  store highlights below are ready to browse.
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* Lightbox */}
-        <Lightbox
-          open={lightboxOpen}
-          close={() => setLightboxOpen(false)}
-          index={lightboxIndex}
-          slides={slides}
-        />
+        <section className="pb-16 md:pb-22 lg:pb-26">
+          <div className="max-w-7xl mx-auto px-6 md:px-10">
+            <div className="mb-8 md:mb-10">
+              <p className="text-brass text-xs font-sans font-semibold tracking-[0.25em] uppercase">
+                Around the Store
+              </p>
+              <h2 className="mt-3 font-display text-cream-50 text-3xl md:text-4xl tracking-wide">
+                Store Highlights
+              </h2>
+              <p className="mt-3 max-w-2xl text-cream-300/75 font-sans text-base leading-relaxed">
+                A curated look at the aisles, displays, and details that make
+                Antiques in Moore worth wandering.
+              </p>
+            </div>
+
+            <StoreHighlights />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

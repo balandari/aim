@@ -1,5 +1,11 @@
 import { createPublicClient } from "./supabase";
-import type { Vendor, VendorWithCount, Item, ItemWithVendor } from "./types";
+import type {
+  Vendor,
+  VendorWithCount,
+  Item,
+  ItemWithVendor,
+  GalleryPhoto,
+} from "./types";
 
 export async function getVendors(): Promise<VendorWithCount[]> {
   const supabase = createPublicClient();
@@ -121,6 +127,111 @@ export async function getItem(id: string): Promise<ItemWithVendor | null> {
   }
 
   return data as unknown as ItemWithVendor;
+}
+
+type GalleryPhotoRow = {
+  photo_url: string | null;
+  is_primary: boolean | null;
+  display_order: number | null;
+  created_at: string | null;
+  item_id: string | null;
+  items:
+    | {
+        id: string;
+        title: string | null;
+        price: string | null;
+        is_sold: boolean;
+        vendors:
+          | {
+              id: string;
+              display_name: string;
+            }
+          | {
+              id: string;
+              display_name: string;
+            }[]
+          | null;
+      }
+    | {
+        id: string;
+        title: string | null;
+        price: string | null;
+        is_sold: boolean;
+        vendors:
+          | {
+              id: string;
+              display_name: string;
+            }
+          | {
+              id: string;
+              display_name: string;
+            }[]
+          | null;
+      }[]
+    | null;
+};
+
+function firstOrSelf<T>(value: T | T[] | null | undefined): T | null {
+  if (!value) return null;
+  return Array.isArray(value) ? value[0] ?? null : value;
+}
+
+export async function getGalleryPhotos(limit = 36): Promise<GalleryPhoto[]> {
+  try {
+    const supabase = createPublicClient();
+
+    const { data, error } = await supabase
+      .from("item_photos")
+      .select(
+        "photo_url, is_primary, display_order, created_at, item_id, items!inner(id, title, price, is_sold, vendors!inner(id, display_name))"
+      )
+      .eq("is_primary", true)
+      .eq("items.is_sold", false)
+      .order("created_at", { ascending: false })
+      .limit(limit * 3);
+
+    if (error || !data) {
+      console.error("Error fetching gallery photos:", error);
+      return [];
+    }
+
+    const vendorCounts = new Map<string, number>();
+    const photos: GalleryPhoto[] = [];
+
+    for (const row of data as unknown as GalleryPhotoRow[]) {
+      const item = firstOrSelf(row.items);
+      const vendor = firstOrSelf(item?.vendors);
+
+      if (!row.photo_url || !row.item_id || !row.created_at || !item || !vendor) {
+        continue;
+      }
+
+      const vendorCount = vendorCounts.get(vendor.id) ?? 0;
+      if (vendorCount >= 4) {
+        continue;
+      }
+
+      photos.push({
+        item_id: item.id,
+        item_title: item.title,
+        price: item.price,
+        photo_url: row.photo_url,
+        created_at: row.created_at,
+        vendor_id: vendor.id,
+        vendor_name: vendor.display_name,
+      });
+      vendorCounts.set(vendor.id, vendorCount + 1);
+
+      if (photos.length >= limit) {
+        break;
+      }
+    }
+
+    return photos;
+  } catch (error) {
+    console.error("Error fetching gallery photos:", error);
+    return [];
+  }
 }
 
 export async function submitInquiry(data: {
