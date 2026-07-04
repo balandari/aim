@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* ===== Dark Theme (default) ===== */
+  /* ===== Dark Theme ===== */
   .dark {
     --stone-50: 250 246 240;
     --stone-100: 243 236 225;

@@ -44,13 +44,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${playfairDisplay.variable} ${libreCaslonText.variable} ${sourceSans.variable}`}
+      className={`${playfairDisplay.variable} ${libreCaslonText.variable} ${sourceSans.variable}`}
+      suppressHydrationWarning
     >
       <head>
-        {/* Prevent flash: check saved theme before first paint */}
+        {/* Prevent flash: apply only an intentional post-migration dark choice before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("aim-theme")==="light"){document.documentElement.classList.remove("dark")}}catch(e){}`,
+            __html: `try{var k="aim-theme",m="aim-theme-light-default-v1";if(!localStorage.getItem(m)){localStorage.removeItem(k);localStorage.setItem(m,"done")}if(localStorage.getItem(k)==="dark"){document.documentElement.classList.add("dark")}else{document.documentElement.classList.remove("dark")}}catch(e){document.documentElement.classList.remove("dark")}`,
           }}
         />
       </head>
