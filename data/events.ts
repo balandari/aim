@@ -16,30 +16,17 @@ export interface AIMEvent {
   vendorInfo?: string;
 }
 
-export const events: AIMEvent[] = [
-  {
-    id: 'outdoor-popup-2026-06',
-    title: 'Outdoor Pop Up Market',
-    date: '2026-06-13',
-    time: '9 AM – 5 PM',
-    description:
-      'Vintage finds & timeless treasures! Browse antiques, collectibles, baked goods, and handmade crafts from vendors set up right in our parking lot. Whether you\'re a seasoned collector or just love a good treasure hunt, this is the summer event you don\'t want to miss.',
-    location: 'Parking Lot — 825 NW 24th St, Moore, OK 73160',
-    isFeatured: true,
-    flyerImage: '/events/june-13-popup-flyer.jpg',
-    highlights: [
-      'Antiques & Collectibles',
-      'Bakers & Crafters',
-      'Vintage Finds',
-    ],
-    weatherNote: 'Weather permitting',
-    vendorInfo:
-      '10×10 vendor space for $30 — prepay to guarantee your spot. Call Frank at (405) 316-3353.',
-  },
-];
+export const events: AIMEvent[] = [];
+
+export const seasonalEventUpdate = {
+  title: "Outdoor Markets Return This Fall",
+  description:
+    "Our outdoor pop-up markets are taking a summer pause and are planned to return when cooler weather does. Until then, the store is open every weekend with fresh vendor finds inside.",
+  note: "Next outdoor market planned when cooler weather returns.",
+};
 
 export const defaultHours = {
-  weekend: '9 AM – 5 PM',
+  weekend: "9 AM - 5 PM",
 };
 
 export function getUpcomingEvents(): AIMEvent[] {

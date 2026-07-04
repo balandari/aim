@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 const quickLinks: Array<{ label: string; href: string; external?: boolean }> = [
   { label: "Home", href: "/" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Events", href: "#events" },
+  { label: "Events", href: "/#events" },
   { label: "Vendors", href: "/vendors" },
 ];
 

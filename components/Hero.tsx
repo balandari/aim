@@ -95,7 +95,7 @@ export default function Hero() {
                   href="#events"
                   className="inline-flex items-center px-8 py-3.5 border border-cream-200/30 text-cream-100 font-sans font-semibold text-sm tracking-[0.15em] uppercase rounded-sm hover:border-brass/50 hover:text-brass transition-all duration-300 ease-gentle backdrop-blur-sm"
                 >
-                  Upcoming Events
+                  Events &amp; Hours
                 </a>
               </div>
             </div>

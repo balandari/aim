@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { getUpcomingEvents, defaultHours } from "@/data/events";
+import {
+  defaultHours,
+  getUpcomingEvents,
+  seasonalEventUpdate,
+} from "@/data/events";
 
 function SectionOrnament({ className = "" }: { className?: string }) {
   return (
@@ -11,7 +15,14 @@ function SectionOrnament({ className = "" }: { className?: string }) {
         fill="currentColor"
         aria-hidden="true"
       >
-        <rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 4)" />
+        <rect
+          x="4"
+          y="0"
+          width="5.66"
+          height="5.66"
+          rx="0.5"
+          transform="rotate(45 4 4)"
+        />
       </svg>
       <div className="w-8 h-px bg-brass/40" />
     </div>
@@ -24,13 +35,12 @@ export default function EventsSection() {
   return (
     <section id="events" className="py-20 md:py-28 bg-stone-950">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        {/* Section heading */}
         <div className="mb-14 md:mb-18 text-center">
           <span className="text-brass text-xs font-sans font-semibold tracking-[0.25em] uppercase">
             What&apos;s Happening
           </span>
           <h2 className="mt-4 font-display text-cream-50 text-4xl md:text-5xl tracking-wide">
-            Upcoming Events
+            {upcoming.length > 0 ? "Upcoming Events" : "Events & Updates"}
           </h2>
           <SectionOrnament className="mt-5 justify-center" />
         </div>
@@ -54,13 +64,12 @@ export default function EventsSection() {
                     className="relative bg-stone-900/80 border border-brass/15 rounded-sm overflow-hidden shadow-2xl shadow-black/30"
                   >
                     <div className="flex flex-col lg:flex-row">
-                      {/* Flyer image column */}
                       {event.flyerImage && (
                         <div className="relative lg:w-[340px] xl:w-[380px] flex-shrink-0">
                           <div className="relative w-full aspect-[2/3] lg:aspect-auto lg:h-full">
                             <Image
                               src={event.flyerImage}
-                              alt={`${event.title} — ${month} ${day} flyer`}
+                              alt={`${event.title} - ${month} ${day} flyer`}
                               fill
                               className="object-cover object-top"
                               sizes="(max-width: 1024px) 100vw, 380px"
@@ -69,21 +78,18 @@ export default function EventsSection() {
                         </div>
                       )}
 
-                      {/* Event details column */}
                       <div className="flex-1 p-8 md:p-10 lg:p-12">
-                        {/* Featured badge + weather */}
                         <div className="flex flex-wrap items-center gap-3 mb-4">
                           <span className="inline-block bg-brass/15 text-brass text-xs font-sans font-semibold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm border border-brass/20">
                             Featured Event
                           </span>
                           {event.weatherNote && (
                             <span className="inline-block bg-amber-900/20 text-amber-400 text-xs font-sans font-medium tracking-wide px-3 py-1.5 rounded-sm border border-amber-700/30">
-                              ☀️ {event.weatherNote}
+                              Weather: {event.weatherNote}
                             </span>
                           )}
                         </div>
 
-                        {/* Date display */}
                         <div className="flex items-baseline gap-3 mb-5">
                           <span className="font-display text-cream-50 text-4xl md:text-5xl leading-none tracking-wide">
                             {month} {day}
@@ -93,17 +99,14 @@ export default function EventsSection() {
                           </span>
                         </div>
 
-                        {/* Title */}
                         <h3 className="font-serif font-bold text-cream-50 text-2xl md:text-3xl">
                           {event.title}
                         </h3>
 
-                        {/* Description */}
                         <p className="mt-4 text-cream-300/80 font-sans text-base md:text-lg leading-relaxed max-w-2xl">
                           {event.description}
                         </p>
 
-                        {/* Highlight tags */}
                         {event.highlights && event.highlights.length > 0 && (
                           <div className="mt-5 flex flex-wrap gap-2">
                             {event.highlights.map((h) => (
@@ -118,7 +121,6 @@ export default function EventsSection() {
                           </div>
                         )}
 
-                        {/* Time + Location */}
                         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-sans text-stone-400">
                           <span className="flex items-center gap-1.5">
                             <ClockIcon />
@@ -130,7 +132,6 @@ export default function EventsSection() {
                           </span>
                         </div>
 
-                        {/* Vendor info callout */}
                         {event.vendorInfo && (
                           <div className="mt-8 bg-stone-800/60 border border-brass/15 rounded-sm p-5">
                             <h4 className="text-brass font-sans font-semibold text-sm uppercase tracking-[0.15em] mb-2 flex items-center gap-2">
@@ -186,18 +187,37 @@ export default function EventsSection() {
             })}
           </div>
         ) : (
-          <article className="bg-stone-900/60 border border-brass/15 rounded-sm p-8 md:p-10 shadow-lg max-w-2xl mx-auto text-center">
-            <h3 className="font-serif font-bold text-cream-50 text-2xl">
-              Open Every Weekend
-            </h3>
-            <p className="mt-3 text-cream-300/80 font-sans text-base leading-relaxed">
-              No special events scheduled right now, but our doors are open
-              every weekend. Come browse 20+ vendors and discover something
-              unexpected.
-            </p>
-            <div className="mt-6 inline-flex items-center gap-3 text-sm font-sans text-cream-200">
-              <ClockIcon />
-              <span>Saturday &amp; Sunday: {defaultHours.weekend}</span>
+          <article className="relative overflow-hidden bg-stone-900/70 border border-brass/15 rounded-sm shadow-lg shadow-black/20 max-w-3xl mx-auto">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brass/40 to-transparent" />
+            <div className="p-8 md:p-10 text-center">
+              <span className="inline-flex items-center justify-center bg-brass/10 text-brass border border-brass/20 rounded-sm px-3 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.18em]">
+                Seasonal Update
+              </span>
+              <h3 className="mt-5 font-serif font-bold text-cream-50 text-2xl md:text-3xl">
+                {seasonalEventUpdate.title}
+              </h3>
+              <p className="mt-4 text-cream-300/80 font-sans text-base md:text-lg leading-relaxed">
+                {seasonalEventUpdate.description}
+              </p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-2 text-left">
+                <div className="bg-stone-950/45 border border-stone-800 rounded-sm p-4">
+                  <p className="text-brass font-sans text-xs font-semibold uppercase tracking-[0.16em]">
+                    Outdoor Market
+                  </p>
+                  <p className="mt-2 text-cream-200/80 font-sans text-sm leading-relaxed">
+                    {seasonalEventUpdate.note}
+                  </p>
+                </div>
+                <div className="bg-stone-950/45 border border-stone-800 rounded-sm p-4">
+                  <p className="text-brass font-sans text-xs font-semibold uppercase tracking-[0.16em]">
+                    Store Hours
+                  </p>
+                  <div className="mt-2 flex items-center gap-2 text-cream-200/80 font-sans text-sm leading-relaxed">
+                    <ClockIcon />
+                    <span>Saturday &amp; Sunday: {defaultHours.weekend}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
         )}
@@ -205,8 +225,6 @@ export default function EventsSection() {
     </section>
   );
 }
-
-/* Inline SVG icons */
 
 function ClockIcon() {
   return (
