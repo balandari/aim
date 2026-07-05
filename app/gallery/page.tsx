@@ -56,7 +56,10 @@ function GalleryCard({ photo }: { photo: GalleryPhoto }) {
       href={aimvendorsVendorUrl(photo.vendor_id)}
       className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
     >
-      <div className="relative aspect-[4/5] bg-stone-800 overflow-hidden">
+      {/* always-dark pins the overlay to a dark scrim + light text regardless of
+          the page theme (globals.css) -- without it, light theme inverts the
+          tokens and the overlay text washes out over the photo. */}
+      <div className="always-dark relative aspect-[4/5] bg-stone-800 overflow-hidden">
         <Image
           src={photo.photo_url}
           alt={heading}
