@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getVendor, getVendorItems } from "@/lib/vendors";
-import { aimvendorsVendorUrl } from "@/lib/config";
+import { aimvendorsItemUrl, aimvendorsVendorUrl } from "@/lib/config";
 import type { Item, ItemPhoto } from "@/lib/types";
 
 interface PageProps {
@@ -132,7 +132,7 @@ export default async function VendorDetailPage({ params }: PageProps) {
                   return (
                     <a
                       key={item.id}
-                      href={aimvendorsVendorUrl(id)}
+                      href={aimvendorsItemUrl(item.id)}
                       className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
                     >
                       {/* Photo */}

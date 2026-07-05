@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StoreHighlights from "@/components/gallery/StoreHighlights";
 import { getGalleryPhotos } from "@/lib/vendors";
-import { aimvendorsVendorUrl } from "@/lib/config";
+import { aimvendorsItemUrl } from "@/lib/config";
 import type { GalleryPhoto } from "@/lib/types";
 import "yet-another-react-lightbox/styles.css";
 
@@ -53,7 +53,7 @@ function GalleryCard({ photo }: { photo: GalleryPhoto }) {
 
   return (
     <a
-      href={aimvendorsVendorUrl(photo.vendor_id)}
+      href={aimvendorsItemUrl(photo.item_id)}
       className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
     >
       {/* always-dark pins the overlay to a dark scrim + light text regardless of
@@ -82,7 +82,7 @@ function GalleryCard({ photo }: { photo: GalleryPhoto }) {
             )}
           </div>
           <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-[0.15em] text-brass/90 group-hover:text-brass transition-colors duration-250">
-            Browse latest items
+            View item
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -137,8 +137,8 @@ export default async function GalleryPage() {
                 Vendor Showcase
               </h2>
               <p className="mt-3 max-w-2xl text-cream-300/75 font-sans text-base leading-relaxed">
-                Recently posted vendor item photos. Tap any piece to browse that
-                vendor&apos;s full collection on AIM Vendors.
+                Recently posted vendor item photos. Tap any piece to view it on
+                AIM Vendors.
               </p>
             </div>
 
