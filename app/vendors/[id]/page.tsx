@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getVendor, getVendorItems } from "@/lib/vendors";
+import { aimvendorsVendorUrl } from "@/lib/config";
 import type { Item, ItemPhoto } from "@/lib/types";
 
 interface PageProps {
@@ -87,6 +88,27 @@ export default async function VendorDetailPage({ params }: PageProps) {
             <p className="mt-3 text-brass/80 font-sans text-sm">
               {items.length} {items.length === 1 ? "item" : "items"} available
             </p>
+            {/* Handoff CTA: AIMVendors owns fresh item browsing */}
+            <a
+              href={aimvendorsVendorUrl(id)}
+              className="mt-6 inline-flex items-center gap-2 rounded-sm border border-brass/40 bg-brass/10 px-5 py-2.5 font-sans text-sm font-semibold text-brass hover:bg-brass/20 hover:border-brass/60 transition-colors duration-250"
+            >
+              Browse the full collection on AIM Vendors
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </a>
             {/* Divider */}
             <div className="mt-8 flex items-center gap-3">
               <span className="block w-12 h-px bg-brass/40" />
@@ -108,9 +130,9 @@ export default async function VendorDetailPage({ params }: PageProps) {
                 {items.map((item) => {
                   const photo = getItemPrimaryPhoto(item);
                   return (
-                    <Link
+                    <a
                       key={item.id}
-                      href={`/items/${item.id}`}
+                      href={aimvendorsVendorUrl(id)}
                       className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
                     >
                       {/* Photo */}
@@ -155,7 +177,7 @@ export default async function VendorDetailPage({ params }: PageProps) {
                           </p>
                         )}
                       </div>
-                    </Link>
+                    </a>
                   );
                 })}
               </div>

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StoreHighlights from "@/components/gallery/StoreHighlights";
 import { getGalleryPhotos } from "@/lib/vendors";
+import { aimvendorsVendorUrl } from "@/lib/config";
 import type { GalleryPhoto } from "@/lib/types";
 import "yet-another-react-lightbox/styles.css";
 
@@ -45,37 +45,59 @@ function formatPrice(price: string) {
 }
 
 function GalleryCard({ photo }: { photo: GalleryPhoto }) {
-  const label = photo.item_title || photo.vendor_name;
   const formattedPrice = photo.price?.trim() ? formatPrice(photo.price) : null;
+  const hasTitle = Boolean(photo.item_title?.trim());
+  // Show the vendor name exactly once: as the heading when the item is
+  // untitled, otherwise as the meta line beneath the title.
+  const heading = hasTitle ? photo.item_title!.trim() : photo.vendor_name;
 
   return (
-    <Link
-      href={`/items/${photo.item_id}`}
+    <a
+      href={aimvendorsVendorUrl(photo.vendor_id)}
       className="group block bg-stone-900/60 border border-stone-800 rounded-sm overflow-hidden shadow-lg shadow-black/20 hover:border-brass/30 hover:shadow-xl transition-all duration-250"
     >
       <div className="relative aspect-[4/5] bg-stone-800 overflow-hidden">
         <Image
           src={photo.photo_url}
-          alt={label}
+          alt={heading}
           fill
           className="object-cover transition-transform duration-350 ease-gentle group-hover:scale-[1.03]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/95 via-stone-950/60 to-transparent p-4">
-          <p className="font-serif text-cream-50 text-lg leading-tight group-hover:text-brass transition-colors duration-250">
-            {label}
+        {/* Readability scrim: dark near the text, fading up over the photo */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-stone-950 via-stone-950/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-4">
+          <p className="font-serif text-cream-50 text-lg leading-tight line-clamp-2 group-hover:text-brass transition-colors duration-250">
+            {heading}
           </p>
-          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-sans">
-            <span className="text-cream-200/70">{photo.vendor_name}</span>
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-sans">
+            {hasTitle && (
+              <span className="text-cream-100/90">{photo.vendor_name}</span>
+            )}
             {formattedPrice && (
-              <span className="text-brass/90 font-semibold">
-                {formattedPrice}
-              </span>
+              <span className="text-brass font-semibold">{formattedPrice}</span>
             )}
           </div>
+          <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-sans font-semibold uppercase tracking-[0.15em] text-brass/90 group-hover:text-brass transition-colors duration-250">
+            Browse latest items
+            <svg
+              className="h-3.5 w-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </span>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 
@@ -112,8 +134,8 @@ export default async function GalleryPage() {
                 Vendor Showcase
               </h2>
               <p className="mt-3 max-w-2xl text-cream-300/75 font-sans text-base leading-relaxed">
-                Recently posted vendor item photos. Tap any piece to see details
-                and ask about availability.
+                Recently posted vendor item photos. Tap any piece to browse that
+                vendor&apos;s full collection on AIM Vendors.
               </p>
             </div>
 
